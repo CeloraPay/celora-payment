@@ -1,0 +1,5 @@
+{
+  "name": "Crypto Payment",
+  "description": "A modern and secure interface for processing crypto currency payments.",
+  "requestFramePermissions": []
+}
