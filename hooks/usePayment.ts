@@ -12,7 +12,7 @@ export const usePayment = (address: string, onNotFound: () => void) => {
         const load = async () => {
             try {
                 const result = await fetchPaymentInfo(address);
-                if (result.finalized) {
+                if (result.isTransfer) {
                     setStatus('success');
                 } else if (result.expiredTime && Date.now() > result.expiredTime) {
                     setStatus('failed');
@@ -32,7 +32,7 @@ export const usePayment = (address: string, onNotFound: () => void) => {
         const interval = setInterval(async () => {
             try {
                 const result = await fetchPaymentInfo(address);
-                if (result.finalized) {
+                if (result.isTransfer) {
                     setStatus('success');
                     clearInterval(interval);
                 } else if (result.expiredTime && Date.now() > result.expiredTime) {
